@@ -2,9 +2,9 @@ services:
   - type: web
     name: livenote-backend
     runtime: docker
-    dockerfilePath: ./backend/Dockerfile
-    dockerContext: ./backend
-    plan: standard
+    dockerfilePath: backend/Dockerfile
+    dockerContext: backend
+    plan: free
     healthCheckPath: /health
     autoDeploy: true
     envVars:
@@ -17,7 +17,7 @@ services:
       - key: WHISPER_MODEL_SIZE
         value: base
       - key: DIARIZATION_ENABLED
-        value: "true"
+        value: "false"
       - key: DIARIZATION_MODE
         value: async_backfill
       - key: LLM_PROVIDER
