@@ -50,12 +50,9 @@ export function MeetingDashboard() {
   const meetingIdRef = useRef<string | null>(null);
 
   // ── Dark mode ────────────────────────────────────────────────────────────
+  // Sync React state to whatever the inline script already applied to <html>.
   useEffect(() => {
-    const saved = localStorage.getItem("livenote-theme");
-    if (saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-      document.documentElement.classList.add("dark");
-      setDark(true);
-    }
+    setDark(document.documentElement.classList.contains("dark"));
   }, []);
 
   const toggleDark = () => {
